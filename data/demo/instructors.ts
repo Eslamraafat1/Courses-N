@@ -1,0 +1,1 @@
+export { instructors } from "../instructors";

@@ -1,0 +1,191 @@
+import { defineDict } from "../define";
+
+export const home = defineDict({
+  en: {
+    // section labels (SectionIndicator)
+    "home.label.hero": "Welcome",
+    "home.label.partners": "Partners",
+    "home.label.categories": "Categories",
+    "home.label.featured": "Featured",
+    "home.label.trending": "Trending",
+    "home.label.stacked": "Highlights",
+    "home.label.paths": "Paths",
+    "home.label.stories": "Stories",
+    "home.label.continue": "Continue",
+    "home.label.universe": "Universe",
+
+    // hero
+    "home.hero.badge": "Cinematic learning, built for builders",
+    "home.hero.l1": "Learn",
+    "home.hero.l2": "like it's",
+    "home.hero.l3": "cinema.",
+    "home.hero.lead": "Bilingual, hands-on courses in code, design, data and AI — taught by practitioners, designed to keep you watching, building and shipping.",
+    "home.hero.cta": "Explore courses",
+    "home.hero.reel": "Watch the showreel",
+    "home.hero.reelTitle": "NEXORA ACADEMY showreel",
+    "home.hero.courses": "demo courses",
+    "home.hero.card.title": "Now learning",
+    "home.hero.card.sub": "Lesson 9 of 12 · demo",
+    "home.hero.ring": "learn · build · ship · repeat · ",
+
+    // trust
+    "home.trust.title": "Trusted by teams at forward-looking companies (fictional demo brands)",
+
+    // categories
+    "home.cats.eyebrow": "Explore by topic",
+    "home.cats.title": "Pick a craft. Go deep.",
+    "home.cats.lead": "Eight disciplines, each with hand-built courses, projects and learning paths.",
+    "home.cats.count": "{n} courses",
+
+    // featured
+    "home.featured.eyebrow": "Featured course",
+    "home.featured.play": "Play the preview of {title}",
+    "home.featured.instructor": "Taught by",
+    "home.featured.students": "Learners",
+    "home.featured.rating": "Rating",
+    "home.featured.hours": "Hours",
+    "home.featured.lessons": "Lessons",
+    "home.featured.outcomes": "What you will be able to do",
+
+    // trending
+    "home.trending.eyebrow": "What everyone is watching",
+    "home.trending.title": "Trending right now",
+    "home.trending.lead": "Filter by topic — the grid reshuffles instantly, no reload.",
+    "home.trending.filter": "Filter trending courses by category",
+
+    // stacked
+    "home.stacked.eyebrow": "Highlights",
+    "home.stacked.title": "A deck of courses worth your time",
+    "home.stacked.lead": "Scroll to peel the stack — each card brings the next one forward.",
+
+    // paths
+    "home.paths.eyebrow": "Learning paths",
+    "home.paths.title": "From first lesson to first job",
+    "home.paths.lead": "Pick a path and follow the line — every stage unlocks the next one.",
+    "home.paths.tabs": "Choose a learning path",
+    "home.paths.weeks": "{n} weeks",
+    "home.paths.stages": "{n} stages",
+    "home.paths.stage": "Stage {n}",
+    "home.paths.open": "Open the path",
+
+    // horizontal showcase
+    "home.hs.eyebrow": "Course stories",
+    "home.hs.title": "Top-rated, side to side",
+    "home.hs.lead": "A horizontal tour through the highest-rated courses on the platform.",
+    "home.hs.hint": "Keep scrolling",
+    "home.hs.region": "Top-rated courses, scrollable horizontally",
+    "home.hs.outro": "There is a lot more where this came from.",
+    "home.hs.cta": "Browse every course",
+
+    // continue
+    "home.continue.eyebrow": "Your learning",
+    "home.continue.title": "Pick up where you left off",
+    "home.continue.lead": "Your progress is saved in this browser only.",
+    "home.continue.resume": "Resume",
+    "home.continue.done": "{a} of {b} lessons completed",
+    "home.continue.more": "Start another course to see it here.",
+    "home.continue.emptyTitle": "Nothing in progress yet",
+    "home.continue.emptyBody": "Open any lesson and your progress will show up here, ready to resume.",
+
+    // universe
+    "home.universe.eyebrow": "Knowledge universe",
+    "home.universe.title": "Everything orbits one idea: keep learning",
+    "home.universe.lead": "Categories and learning paths as a living map. Hover a planet, or use the list.",
+    "home.universe.hint": "Hover or tap a planet to see where it leads.",
+    "home.universe.hintStatic": "Hover a name in the list to light up its planet.",
+    "home.universe.nav": "Categories and learning paths",
+    "home.universe.categories": "Categories",
+    "home.universe.paths": "Learning paths",
+    "home.universe.category": "Category",
+    "home.universe.path": "Learning path",
+    "home.universe.clear": "Clear selection",
+  },
+  ar: {
+    "home.label.hero": "أهلًا بك",
+    "home.label.partners": "الشركاء",
+    "home.label.categories": "التصنيفات",
+    "home.label.featured": "المميّز",
+    "home.label.trending": "الرائج",
+    "home.label.stacked": "أبرز الدورات",
+    "home.label.paths": "المسارات",
+    "home.label.stories": "القصص",
+    "home.label.continue": "أكمل",
+    "home.label.universe": "الكون",
+
+    "home.hero.badge": "تعلّم سينمائي لمن يبنون ويبدعون",
+    "home.hero.l1": "تعلّم",
+    "home.hero.l2": "كأنك في",
+    "home.hero.l3": "فيلم سينمائي.",
+    "home.hero.lead": "دورات عملية بالعربية والإنجليزية في البرمجة والتصميم والبيانات والذكاء الاصطناعي، يقدّمها ممارسون ومصمَّمة لتبقيك تتابع وتبني وتُنجز.",
+    "home.hero.cta": "استكشف الدورات",
+    "home.hero.reel": "شاهد العرض التعريفي",
+    "home.hero.reelTitle": "العرض التعريفي لنيكسورا أكاديمي",
+    "home.hero.courses": "دورة تجريبية",
+    "home.hero.card.title": "تتعلّم الآن",
+    "home.hero.card.sub": "الدرس 9 من 12 · تجريبي",
+    "home.hero.ring": "تعلّم · ابنِ · أطلق · كرّر · ",
+
+    "home.trust.title": "يثق بنا فريق العمل في شركات رائدة (علامات تجريبية خيالية)",
+
+    "home.cats.eyebrow": "استكشف حسب الموضوع",
+    "home.cats.title": "اختر حرفتك وتعمّق فيها",
+    "home.cats.lead": "ثمانية مجالات، لكل منها دورات ومشاريع ومسارات تعلّم مُعدّة بعناية.",
+    "home.cats.count": "{n} دورة",
+
+    "home.featured.eyebrow": "الدورة المميّزة",
+    "home.featured.play": "شغّل المعاينة: {title}",
+    "home.featured.instructor": "يقدّمها",
+    "home.featured.students": "المتعلّمون",
+    "home.featured.rating": "التقييم",
+    "home.featured.hours": "ساعات",
+    "home.featured.lessons": "دروس",
+    "home.featured.outcomes": "ما ستتمكّن من فعله",
+
+    "home.trending.eyebrow": "ما يشاهده الجميع",
+    "home.trending.title": "الأكثر رواجًا الآن",
+    "home.trending.lead": "صفِّ حسب الموضوع — تُعاد ترتيب الشبكة فورًا دون إعادة تحميل.",
+    "home.trending.filter": "تصفية الدورات الرائجة حسب التصنيف",
+
+    "home.stacked.eyebrow": "أبرز الدورات",
+    "home.stacked.title": "رزمة دورات تستحق وقتك",
+    "home.stacked.lead": "مرّر لتفكّ الرزمة — كل بطاقة تُقدّم التي بعدها إلى الأمام.",
+
+    "home.paths.eyebrow": "مسارات التعلّم",
+    "home.paths.title": "من الدرس الأول إلى الوظيفة الأولى",
+    "home.paths.lead": "اختر مسارًا واتبع الخط — كل مرحلة تفتح التي تليها.",
+    "home.paths.tabs": "اختر مسار تعلّم",
+    "home.paths.weeks": "{n} أسبوع",
+    "home.paths.stages": "المراحل: {n}",
+    "home.paths.stage": "المرحلة {n}",
+    "home.paths.open": "افتح المسار",
+
+    "home.hs.eyebrow": "حكايات الدورات",
+    "home.hs.title": "الأعلى تقييمًا، من طرف إلى طرف",
+    "home.hs.lead": "جولة أفقية بين أعلى الدورات تقييمًا على المنصّة.",
+    "home.hs.hint": "واصل التمرير",
+    "home.hs.region": "الدورات الأعلى تقييمًا، قابلة للتمرير أفقيًا",
+    "home.hs.outro": "وهناك الكثير غير هذا.",
+    "home.hs.cta": "تصفّح كل الدورات",
+
+    "home.continue.eyebrow": "تعلّمك",
+    "home.continue.title": "أكمل من حيث توقفت",
+    "home.continue.lead": "يُحفظ تقدّمك في هذا المتصفح فقط.",
+    "home.continue.resume": "استئناف",
+    "home.continue.done": "أكملت {a} من {b} درسًا",
+    "home.continue.more": "ابدأ دورة أخرى لتظهر هنا.",
+    "home.continue.emptyTitle": "لا شيء قيد التقدّم بعد",
+    "home.continue.emptyBody": "افتح أي درس وسيظهر تقدّمك هنا جاهزًا للاستئناف.",
+
+    "home.universe.eyebrow": "كون المعرفة",
+    "home.universe.title": "كل شيء يدور حول فكرة واحدة: واصل التعلّم",
+    "home.universe.lead": "التصنيفات ومسارات التعلّم كخريطة حيّة. مرّر على كوكب أو استخدم القائمة.",
+    "home.universe.hint": "مرّر أو المس كوكبًا لترى إلى أين يقود.",
+    "home.universe.hintStatic": "مرّر على اسم في القائمة ليضيء كوكبه.",
+    "home.universe.nav": "التصنيفات ومسارات التعلّم",
+    "home.universe.categories": "التصنيفات",
+    "home.universe.paths": "مسارات التعلّم",
+    "home.universe.category": "تصنيف",
+    "home.universe.path": "مسار تعلّم",
+    "home.universe.clear": "إلغاء التحديد",
+  },
+});

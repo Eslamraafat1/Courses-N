@@ -1,0 +1,36 @@
+import type { Category } from "@/types";
+
+const u = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=70`;
+
+export const categories: Category[] = [
+  { id: "cat-programming", slug: "programming", icon: "Code2", color: "#5233e8", featured: true, image: u("1555066931-4365d14bab8c"),
+    name: { ar: "البرمجة", en: "Programming" },
+    description: { ar: "من الأساسيات إلى بناء تطبيقات ويب كاملة.", en: "From fundamentals to shipping full web apps." } },
+  { id: "cat-design", slug: "design", icon: "PenTool", color: "#ff5c3a", featured: true, image: u("1561070791-2526d30994b5"),
+    name: { ar: "التصميم", en: "Design" },
+    description: { ar: "تصميم واجهات وهويات بصرية تُلهم.", en: "Interfaces and brand identities that inspire." } },
+  { id: "cat-ai", slug: "ai", icon: "BrainCircuit", color: "#2db4ff", featured: true, image: u("1677442136019-21780ecad995"),
+    name: { ar: "الذكاء الاصطناعي", en: "Artificial Intelligence" },
+    description: { ar: "افهم الذكاء الاصطناعي ووظّفه في عملك.", en: "Understand AI and put it to work." } },
+  { id: "cat-data", slug: "data", icon: "BarChart3", color: "#18b57b", image: u("1551288049-bebda4e38f71"),
+    name: { ar: "تحليل البيانات", en: "Data Analysis" },
+    description: { ar: "حوّل الأرقام إلى قرارات.", en: "Turn numbers into decisions." } },
+  { id: "cat-business", slug: "business", icon: "Briefcase", color: "#e9a400", image: u("1522202176988-66273c2fd55f"),
+    name: { ar: "الأعمال والمالية", en: "Business & Finance" },
+    description: { ar: "ريادة الأعمال والإدارة والاستراتيجية.", en: "Entrepreneurship, management and strategy." } },
+  { id: "cat-marketing", slug: "marketing", icon: "Megaphone", color: "#d6338a", image: u("1460925895917-afdab827c52f"),
+    name: { ar: "التسويق", en: "Marketing" },
+    description: { ar: "نمِّ جمهورك وحوّله إلى عملاء.", en: "Grow your audience and convert it." } },
+  { id: "cat-video", slug: "video", icon: "Clapperboard", color: "#7a4dff", image: u("1574717024653-61fd2cf4d44d"),
+    name: { ar: "الفيديو والإنتاج", en: "Video & Production" },
+    description: { ar: "صناعة محتوى مرئي بأسلوب سينمائي.", en: "Create visual content with a cinematic eye." } },
+  { id: "cat-cyber", slug: "cybersecurity", icon: "ShieldCheck", color: "#12a06a", image: u("1550751827-4bd374c3f58b"),
+    name: { ar: "الأمن السيبراني", en: "Cybersecurity" },
+    description: { ar: "احمِ الأنظمة والبيانات من التهديدات.", en: "Protect systems and data from threats." } },
+  { id: "cat-photo", slug: "photography", icon: "Camera", color: "#e07b00", image: u("1452587925148-ce544e77e70d"),
+    name: { ar: "التصوير الفوتوغرافي", en: "Photography" },
+    description: { ar: "التقط صورًا تحكي قصة.", en: "Capture images that tell a story." } },
+  { id: "cat-graphic", slug: "graphic-design", icon: "Palette", color: "#c2185b", image: u("1626785774573-4b799315345d"),
+    name: { ar: "التصميم الجرافيكي", en: "Graphic Design" },
+    description: { ar: "تكوينات بصرية وهويات إبداعية.", en: "Visual compositions and creative identities." } },
+];
