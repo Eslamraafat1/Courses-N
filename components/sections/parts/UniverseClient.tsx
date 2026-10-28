@@ -67,7 +67,7 @@ export function UniverseClient({ items }: { items: UniverseItem[] }) {
                 <span
                   key={it.id}
                   className={cn("absolute size-3 rounded-full transition-transform duration-300", focus === it.id && "scale-[2.2]")}
-                  style={{ background: it.color, left: `${50 + Math.cos(a) * ring}%`, top: `${50 + Math.sin(a) * ring}%`, boxShadow: `0 0 14px ${it.color}`, translate: "-50% -50%", animation: `fade-in .8s ${i * 60}ms both` }}
+                  style={{ background: it.color, left: `${(50 + Math.cos(a) * ring).toFixed(3)}%`, top: `${(50 + Math.sin(a) * ring).toFixed(3)}%`, boxShadow: `0 0 14px ${it.color}`, translate: "-50% -50%", animation: `fade-in .8s ${i * 60}ms both` }}
                 />
               );
             })}

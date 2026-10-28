@@ -27,8 +27,8 @@ export function StackedClient({ head, courses }: { head: ReactNode; courses: Cou
     (c, { gsap }) => {
       const el = root.current;
       const pinEl = pin.current;
-      if (!el || !pinEl || !c.motion || !c.desktop) return;
-      const cards = gsap.utils.toArray<HTMLElement>("[data-card]", el);
+      if (!el || !pinEl || !c.motion || !c.desktop || window.innerHeight < 640) return;
+      const cards = gsap.utils.toArray<HTMLElement>("[data-stk-card]", el);
       const rail = gsap.utils.toArray<HTMLElement>("[data-rail]", el);
       const count = cards.length;
       if (count < 2) return;
@@ -73,7 +73,7 @@ export function StackedClient({ head, courses }: { head: ReactNode; courses: Cou
     <div ref={root} className="group/stk">
       <div ref={pin} className="py-20 sm:py-28 group-data-[stack=true]/stk:py-6">
         <div className="container-x">
-          <div className="relative z-20 bg-bg pb-3 group-data-[stack=true]/stk:[&_.hd-1]:text-[clamp(1.75rem,3vw,2.75rem)] group-data-[stack=true]/stk:[&_p]:mt-3 group-data-[stack=true]/stk:[&_p]:text-base">{head}</div>
+          <div className="relative z-20 bg-bg pb-3 group-data-[stack=true]/stk:[&_.hd-1]:!text-[clamp(1.75rem,2.6vw,2.5rem)] group-data-[stack=true]/stk:[&_p]:!mt-2 group-data-[stack=true]/stk:[&_p]:!text-base group-data-[stack=true]/stk:[&_.eyebrow]:!mb-2">{head}</div>
 
           <div className="mt-12 grid gap-8 group-data-[stack=true]/stk:mt-8 lg:group-data-[stack=true]/stk:grid-cols-[13rem_1fr]">
             <ol className="hidden flex-col justify-center gap-1 group-data-[stack=true]/stk:flex" aria-hidden>
@@ -89,12 +89,12 @@ export function StackedClient({ head, courses }: { head: ReactNode; courses: Cou
               ))}
             </ol>
 
-            <ul className="relative z-0 isolate flex flex-col gap-6 group-data-[stack=true]/stk:block group-data-[stack=true]/stk:[clip-path:inset(0_-1.5rem_-3rem_-1.5rem)] group-data-[stack=true]/stk:h-[clamp(26rem,66vh,35rem)]">
+            <ul className="relative z-0 isolate flex flex-col gap-6 group-data-[stack=true]/stk:block group-data-[stack=true]/stk:[clip-path:inset(0_-1.5rem_-3rem_-1.5rem)] group-data-[stack=true]/stk:h-[clamp(24rem,calc(100svh-22rem),35rem)]">
               {courses.map((c, i) => (
                 <li
                   key={c.slug}
-                  data-card
-                  className="card grid overflow-hidden bg-surface will-change-transform md:grid-cols-[1.05fr_1fr] group-data-[stack=true]/stk:absolute group-data-[stack=true]/stk:inset-x-0 group-data-[stack=true]/stk:top-0 group-data-[stack=true]/stk:h-[calc(100%-5rem)]"
+                  data-stk-card
+                  className="card grid overflow-hidden bg-surface will-change-transform md:grid-cols-[1.05fr_1fr] group-data-[stack=true]/stk:absolute group-data-[stack=true]/stk:inset-x-0 group-data-[stack=true]/stk:top-0 group-data-[stack=true]/stk:h-[calc(100%-4rem)]"
                 >
                   <div className="relative min-h-56 md:min-h-full">
                     <Image src={c.thumbnail} alt="" fill sizes="(min-width:1024px) 40vw, 92vw" className="object-cover" />

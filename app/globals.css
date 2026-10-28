@@ -437,11 +437,14 @@ html { transition: --tint 1.4s ease; }
 
 /* ---------- Extra motion (CSS only, zero JS) ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  main { animation: page-in .55s cubic-bezier(.2,.7,.2,1) both; }
-  @keyframes page-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-  main article, main [data-card] { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease; }
+  /* opacity only: a transform animation (even filled to `none`) makes <main> a containing block for
+     position:fixed, which breaks every GSAP pin inside it */
+  main { animation: page-in .55s cubic-bezier(.2,.7,.2,1) backwards; }
+  @keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+  /* skip elements whose transform is driven by JS (framer-motion carousels, GSAP stacks) */
+  main article:not([aria-roledescription]), main [data-card] { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease; }
   @media (hover: hover) {
-    main article:hover, main [data-card]:hover { transform: translateY(-6px); }
+    main article:not([aria-roledescription]):hover, main [data-card]:hover { transform: translateY(-6px); }
   }
   main a.btn, main button:not([role="tab"]):active { transition: transform .15s ease; }
   main button:active { transform: scale(.96); }
