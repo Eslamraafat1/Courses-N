@@ -446,3 +446,30 @@ html { transition: --tint 1.4s ease; }
   main a.btn, main button:not([role="tab"]):active { transition: transform .15s ease; }
   main button:active { transform: scale(.96); }
 }
+
+/* ---------- Scroll-driven text motion (CSS only; no DOM changes, no JS) ----------
+   Headlines rise and un-blur as they enter the viewport, body copy fades up, links draw an underline.
+   Headings already animated by SplitText (.split-mask) are skipped. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @keyframes text-rise { from { opacity: 0; transform: translateY(34px); filter: blur(6px); letter-spacing: .04em; } to { opacity: 1; transform: none; filter: none; letter-spacing: normal; } }
+    @keyframes text-fade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @keyframes text-slide { from { opacity: 0; transform: translateX(calc(var(--dir, 1) * -28px)); } to { opacity: 1; transform: none; } }
+    main :is(h1, h2, h3):not(:has(.split-mask)):not([aria-hidden]) {
+      animation: text-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 55%;
+    }
+    main :is(p, blockquote, figcaption):not([aria-hidden]):not(:has(.split-mask)) {
+      animation: text-fade linear both; animation-timeline: view(); animation-range: entry 0% entry 45%;
+    }
+    main li:not([aria-hidden]) > :is(h4, h5, strong):first-child {
+      animation: text-slide linear both; animation-timeline: view(); animation-range: entry 0% entry 50%;
+    }
+    [dir="rtl"] main { --dir: -1; }
+  }
+  /* animated underline on in-text links */
+  main p a, main li > a.underline, main .prose a {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+    transition: background-size .35s cubic-bezier(.2,.7,.2,1);
+  }
+  main p a:hover, main li > a.underline:hover, main .prose a:hover { background-size: 100% 1.5px; }
+}

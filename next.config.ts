@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   /* config options here */
   experimental: {
     agentFeedback: true,
+    // BUILD_CPUS=2 limits prerender workers on low-RAM machines (default: Next decides).
+    ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
     optimizePackageImports: ["framer-motion", "gsap", "lucide-react", "three", "@react-three/drei"],
   },
   // Optional separate output dir (used to test backend mode side by side with demo mode).
