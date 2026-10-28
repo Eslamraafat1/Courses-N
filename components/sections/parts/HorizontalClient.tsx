@@ -73,6 +73,7 @@ export function HorizontalClient({ head, courses }: { head: ReactNode; courses: 
     },
     root,
     [isRtl, courses.length],
+    { eager: true },
   );
 
   const shapes = ["tall", "wide", "block"] as const;

@@ -1,4 +1,5 @@
 "use client";
+import { confettiBurst } from "@/lib/confetti";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -113,6 +114,7 @@ export function LessonPlayer({ course, lessonId }: { course: Course; lessonId: s
     if (!lesson) return;
     const nowDone = progress.toggleLesson(slug, lesson.id);
     toast.success(nowDone ? t("player.markedDone") : t("player.markedUndone"));
+    if (nowDone) confettiBurst();
   }, [lesson, progress, slug, toast, t]);
 
   const onEnded = () => {

@@ -1,7 +1,6 @@
 "use client";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { setLenis } from "@/lib/scroll";
 
@@ -12,18 +11,33 @@ import { setLenis } from "@/lib/scroll";
 export function SmoothScroll() {
   const pathname = usePathname();
 
+  // Lenis is imported lazily after first paint so it never competes with hydration.
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const lenis = new Lenis({ lerp: 0.09, smoothWheel: true, anchors: false });
-    setLenis(lenis);
-    lenis.on("scroll", ScrollTrigger.update);
-    const tick = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
+    let dead = false;
+    let cleanup = () => {};
+    const start = async () => {
+      const { default: Lenis } = await import("lenis");
+      if (dead) return;
+      const lenis = new Lenis({ lerp: 0.09, smoothWheel: true, anchors: false });
+      setLenis(lenis);
+      lenis.on("scroll", ScrollTrigger.update);
+      const tick = (time: number) => lenis.raf(time * 1000);
+      gsap.ticker.add(tick);
+      gsap.ticker.lagSmoothing(0);
+      cleanup = () => {
+        gsap.ticker.remove(tick);
+        lenis.destroy();
+        setLenis(null);
+      };
+    };
+    const w = window as unknown as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number; cancelIdleCallback?: (id: number) => void };
+    const id = w.requestIdleCallback ? w.requestIdleCallback(start, { timeout: 2000 }) : window.setTimeout(start, 800);
     return () => {
-      gsap.ticker.remove(tick);
-      lenis.destroy();
-      setLenis(null);
+      dead = true;
+      if (w.requestIdleCallback) w.cancelIdleCallback?.(id);
+      else window.clearTimeout(id);
+      cleanup();
     };
   }, []);
 

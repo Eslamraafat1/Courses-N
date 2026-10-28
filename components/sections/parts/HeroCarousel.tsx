@@ -265,6 +265,7 @@ export function HeroCarousel({ courses, stats }: Props) {
         {/* ---------- 3D coverflow ---------- */}
         <div ref={stage} className="relative z-10 mx-auto h-[22rem] w-full max-w-[34rem] [perspective:1500px] sm:h-[26rem] lg:h-[31rem]">
           <motion.div
+            data-cursor="drag"
             className="absolute inset-0 touch-pan-y"
             style={reduce ? undefined : { rotateY: stageRY, rotateX: stageRX, transformStyle: "preserve-3d" }}
             drag="x"
@@ -300,6 +301,7 @@ export function HeroCarousel({ courses, stats }: Props) {
                     tabIndex={visible ? 0 : -1}
                     aria-hidden={!visible}
                     aria-label={on ? t("home3.hero.openCard", { title: l(c.title) }) : t("home3.hero.goto", { n: i + 1, title: l(c.title) })}
+                    data-cursor={on ? "play" : undefined}
                     onClick={() => (on ? openPreview(c) : go(i))}
                     className={cn("group/card relative block aspect-[3/4] w-full overflow-hidden rounded-[1.5rem] border border-white/20 bg-black text-start shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)] transition-shadow", on && "shadow-[0_40px_120px_-20px_var(--hero-glow)]")}
                     style={{ ["--hero-glow" as string]: accent }}
@@ -372,7 +374,7 @@ export function HeroCarousel({ courses, stats }: Props) {
                   onClick={() => go(i)}
                   aria-label={t("home3.hero.goto", { n: i + 1, title: l(c.title) })}
                   aria-current={i === active ? "true" : undefined}
-                  className="group/seg relative block h-6 w-full"
+                  className="group/seg relative block h-11 w-full max-sm:pointer-events-none"
                 >
                   <span className="absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 overflow-hidden rounded-full bg-white/25 transition-all group-hover/seg:h-2.5">
                     <span

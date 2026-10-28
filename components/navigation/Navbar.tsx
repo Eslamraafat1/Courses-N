@@ -45,6 +45,7 @@ export function Navbar({ categories }: { categories: NavCategory[] }) {
   const search = useSearch();
   const { list: wishlist } = useWishlist();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mega, setMega] = useState(false);
   const [mobile, setMobile] = useState(false);
   const megaWrap = useRef<HTMLDivElement>(null);
@@ -56,8 +57,18 @@ export function Navbar({ categories }: { categories: NavCategory[] }) {
     setMobile(false);
   }
 
+  // glass background after 24px; hide while scrolling down (more room to read), reveal on any upward scroll
   useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 24);
+    let last = window.scrollY;
+    const on = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      const dy = y - last;
+      if (Math.abs(dy) > 6) {
+        setHidden(dy > 0 && y > 220);
+        last = y;
+      }
+    };
     on();
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);
@@ -98,7 +109,8 @@ export function Navbar({ categories }: { categories: NavCategory[] }) {
   return (
     <header
       className={cn(
-        "theme-t sticky top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300",
+        "theme-t sticky top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter,transform] duration-300",
+        hidden && !mega && !mobile && "-translate-y-full focus-within:translate-y-0",
         scrolled ? "border-line bg-bg/80 backdrop-blur-xl" : "border-transparent bg-transparent",
       )}
       style={{ height: "var(--nav-h)" }}

@@ -3,6 +3,7 @@ import type { Category, Lang } from "@/types";
 import { makeT } from "@/lib/i18n";
 import { Link } from "@/components/ui/Link";
 import { Logo } from "@/components/navigation/Navbar";
+import { FooterWordmark } from "./FooterWordmark";
 
 /** Server component — fully static per language. Social links are placeholders (example.com) in this demo. */
 export function Footer({ lang, categories }: { lang: Lang; categories: Category[] }) {
@@ -76,7 +77,7 @@ export function Footer({ lang, categories }: { lang: Lang; categories: Category[
                 <ul className="space-y-1">
                   {c.links.map((l) => (
                     <li key={l.href}>
-                      <Link href={l.href} className="inline-flex min-h-9 items-center text-bg/85 transition hover:text-volt">
+                      <Link href={l.href} className="inline-flex min-h-11 min-w-11 items-center text-bg/85 transition hover:text-volt">
                         {l.label}
                       </Link>
                     </li>
@@ -87,17 +88,15 @@ export function Footer({ lang, categories }: { lang: Lang; categories: Category[
           </div>
         </div>
 
-        <p aria-hidden className="font-display mt-16 select-none text-center text-[clamp(3rem,15vw,13rem)] font-extrabold uppercase leading-[0.85] tracking-tighter text-bg/[0.07]">
-          Nexora
-        </p>
+        <FooterWordmark />
 
         <div className="mt-8 flex flex-col gap-3 border-t border-bg/15 pt-6 text-sm text-bg/60 sm:flex-row sm:items-center sm:justify-between">
           <p>{t("footer.rights", { year })}</p>
           <ul className="flex flex-wrap gap-x-6 gap-y-1">
-            <li><Link href="/privacy" className="inline-flex min-h-9 items-center hover:text-volt">{t("footer.privacy")}</Link></li>
-            <li><Link href="/terms" className="inline-flex min-h-9 items-center hover:text-volt">{t("footer.terms")}</Link></li>
-            <li><Link href="/accessibility" className="inline-flex min-h-9 items-center hover:text-volt">{t("nav2.accessibility")}</Link></li>
-            <li className="inline-flex min-h-9 items-center">{t("footer.madeWith")}</li>
+            <li><Link href="/privacy" className="inline-flex min-h-11 min-w-11 items-center hover:text-volt">{t("footer.privacy")}</Link></li>
+            <li><Link href="/terms" className="inline-flex min-h-11 min-w-11 items-center hover:text-volt">{t("footer.terms")}</Link></li>
+            <li><Link href="/accessibility" className="inline-flex min-h-11 min-w-11 items-center hover:text-volt">{t("nav2.accessibility")}</Link></li>
+            <li className="inline-flex min-h-11 min-w-11 items-center">{t("footer.madeWith")}</li>
           </ul>
         </div>
       </div>

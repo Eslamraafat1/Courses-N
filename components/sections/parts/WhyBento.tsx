@@ -276,6 +276,7 @@ export function WhyBento() {
     },
     root,
     [],
+    { eager: true },
   );
 
   const choose = useCallback((i: number) => {

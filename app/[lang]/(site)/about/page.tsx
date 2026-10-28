@@ -180,8 +180,8 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
           <Button href="/become-instructor" size="lg" variant="outline">{t("about2.cta.teach")}</Button>
         </div>
         <p className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-semibold">
-          <Link href="/success-stories" className="text-accent underline underline-offset-4">{t("about2.cta.stories")}</Link>
-          <Link href="/contact" className="text-accent underline underline-offset-4">{t("about2.cta.contact")}</Link>
+          <Link href="/success-stories" className="inline-flex min-h-11 items-center px-2 text-accent underline underline-offset-4">{t("about2.cta.stories")}</Link>
+          <Link href="/contact" className="inline-flex min-h-11 items-center px-2 text-accent underline underline-offset-4">{t("about2.cta.contact")}</Link>
         </p>
       </section>
     </>

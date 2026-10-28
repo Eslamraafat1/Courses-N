@@ -1,5 +1,5 @@
 "use client";
-import { useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 
 interface NavExtra extends Navigator {
   connection?: { saveData?: boolean };
@@ -30,17 +30,24 @@ function evaluate(minWidth: number): boolean {
   return hasWebgl();
 }
 
-function subscribe(cb: () => void) {
-  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-  mq.addEventListener("change", cb);
-  window.addEventListener("resize", cb);
-  return () => {
-    mq.removeEventListener("change", cb);
-    window.removeEventListener("resize", cb);
-  };
-}
-
-/** false on the server and during hydration, so the static fallback is always the first paint. */
-export function useCapable(minWidth: number): boolean {
-  return useSyncExternalStore(subscribe, () => evaluate(minWidth), () => false);
+/** false on the server and during hydration, so the static fallback is always the first paint.
+ *  The (costly) WebGL probe only runs once `enabled` (e.g. the scene is near the viewport) and when the browser is idle. */
+export function useCapable(minWidth: number, enabled = true): boolean {
+  const [ok, setOk] = useState(false);
+  useEffect(() => {
+    if (!enabled) return;
+    const run = () => setOk(evaluate(minWidth));
+    const hasIdle = typeof window.requestIdleCallback === "function";
+    const id = hasIdle ? window.requestIdleCallback(run, { timeout: 1500 }) : window.setTimeout(run, 300);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    mq.addEventListener("change", run);
+    window.addEventListener("resize", run);
+    return () => {
+      if (hasIdle) window.cancelIdleCallback(id);
+      else window.clearTimeout(id);
+      mq.removeEventListener("change", run);
+      window.removeEventListener("resize", run);
+    };
+  }, [minWidth, enabled]);
+  return enabled && ok;
 }

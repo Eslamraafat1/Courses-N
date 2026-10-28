@@ -219,6 +219,7 @@ export function ExperienceSteps() {
     },
     root,
     [],
+    { eager: true },
   );
 
   const select = (i: number) => {

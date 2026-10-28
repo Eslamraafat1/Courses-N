@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Bricolage_Grotesque, Geist_Mono, IBM_Plex_Sans_Arabic, Manrope } from "next/font/google";
+import { Bricolage_Grotesque, IBM_Plex_Sans_Arabic, Manrope } from "next/font/google";
 import "../globals.css";
 import { LOCALES, dirOf, isLang } from "@/lib/i18n/config";
 import { makeT } from "@/lib/i18n";
@@ -11,8 +11,7 @@ import { AppProviders } from "@/components/providers/AppProviders";
 
 const display = Bricolage_Grotesque({ variable: "--f-display", subsets: ["latin"], display: "swap" });
 const body = Manrope({ variable: "--f-body", subsets: ["latin"], display: "swap" });
-const arabic = IBM_Plex_Sans_Arabic({ variable: "--f-arabic", subsets: ["arabic"], weight: ["400", "500", "600", "700"], display: "swap" });
-const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+const arabic = IBM_Plex_Sans_Arabic({ variable: "--f-arabic", subsets: ["arabic"], weight: ["400", "600", "700"], display: "swap" });
 
 export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
@@ -45,8 +44,9 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   const searchIndex = await getSearchIndex();
   const t = makeT(lang);
 
+  // Only the active language's font files are preloaded: English pages never download the Arabic family.
   return (
-    <html lang={lang} dir={dirOf(lang)} suppressHydrationWarning className={`${display.variable} ${body.variable} ${arabic.variable} ${mono.variable}`}>
+    <html lang={lang} dir={dirOf(lang)} suppressHydrationWarning className={lang === "ar" ? `${display.variable} ${body.variable} ${arabic.variable}` : `${display.variable} ${body.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>

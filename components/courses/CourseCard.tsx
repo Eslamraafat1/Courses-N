@@ -67,12 +67,12 @@ export function CourseCard({ course: c, variant = "grid", className, layoutId, o
       <div className={cn("relative overflow-hidden", ratio)}>
         {layoutId ? (
           <motion.div layoutId={layoutId} className="absolute inset-0">
-            <button type="button" onClick={open} aria-label={onThumbClick ? title : t("video.poster", { title })} className="group/thumb absolute inset-0 block">
+            <button type="button" data-cursor={onThumbClick ? "view" : "play"} onClick={open} aria-label={onThumbClick ? title : t("video.poster", { title })} className="group/thumb absolute inset-0 block">
               {inner}
             </button>
           </motion.div>
         ) : (
-          <button type="button" onClick={open} aria-label={onThumbClick ? title : t("video.poster", { title })} className="group/thumb absolute inset-0 block">
+          <button type="button" data-cursor={onThumbClick ? "view" : "play"} onClick={open} aria-label={onThumbClick ? title : t("video.poster", { title })} className="group/thumb absolute inset-0 block">
             {inner}
           </button>
         )}

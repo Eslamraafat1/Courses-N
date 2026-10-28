@@ -25,8 +25,8 @@ export interface UniverseItem {
 export function UniverseClient({ items }: { items: UniverseItem[] }) {
   const { t, l } = useI18n();
   const stage = useRef<HTMLDivElement>(null);
-  const capable = useCapable(768);
   const near = useInView(stage, { once: true, margin: "250px" }); // lazy-mount trigger
+  const capable = useCapable(768, near);
   const visible = useInView(stage, { margin: "50px" }); // pause trigger
   const [active, setActive] = useState<string | null>(null);
   const [pinned, setPinned] = useState<string | null>(null);

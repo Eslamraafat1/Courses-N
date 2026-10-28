@@ -218,6 +218,9 @@ export const common = defineDict({
     "bc.home": "Home",
 
     // scroll
+    "cursor.play": "Play",
+    "cursor.drag": "Drag",
+    "cursor.view": "View",
     "scroll.progress": "Reading progress",
     "scroll.sections": "Page sections",
   },
@@ -425,6 +428,9 @@ export const common = defineDict({
     "bc.label": "مسار التنقل",
     "bc.home": "الرئيسية",
 
+    "cursor.play": "تشغيل",
+    "cursor.drag": "اسحب",
+    "cursor.view": "عرض",
     "scroll.progress": "تقدم القراءة",
     "scroll.sections": "أقسام الصفحة",
   },

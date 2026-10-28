@@ -66,6 +66,7 @@ export function StackedClient({ head, courses }: { head: ReactNode; courses: Cou
     },
     root,
     [courses.length],
+    { eager: true },
   );
 
   return (
