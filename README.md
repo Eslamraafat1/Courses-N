@@ -1,5 +1,7 @@
 # NEXORA ACADEMY — Cinematic Bilingual Learning Platform
 
+[![E2E Tests](https://github.com/Eslamraafat1/Courses-N/actions/workflows/e2e.yml/badge.svg)](https://github.com/Eslamraafat1/Courses-N/actions/workflows/e2e.yml)
+
 منصة تعليم إلكتروني سينمائية (عربي RTL / English LTR) مبنية بـ **Next.js 16** و**React 19** و**Tailwind 4** و**GSAP** و**Framer Motion** و**Three.js**.
 واجهة كاملة تعمل الآن على بيانات تجريبية (Demo API)، وجاهزة للتوصيل بـ Backend حقيقي دون إعادة بناء الواجهة.
 
@@ -41,3 +43,7 @@ data/               demo data           lib/i18n            ar/en dictionaries
 
 ## Needs a real backend
 Authentication & roles, payments, contact/newsletter delivery, saving admin edits, reviews/Q&A, certificates, cross-device sync, uploads.
+
+## 🧪 Testing
+
+Automated **Playwright** end-to-end tests run on every push via **GitHub Actions** (desktop + mobile Chrome). See [`e2e/`](./e2e).
