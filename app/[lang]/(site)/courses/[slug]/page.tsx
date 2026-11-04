@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLang } from "@/lib/i18n/config";
 import { makeT } from "@/lib/i18n";
-import { pageMeta, SITE_NAME, SITE_URL } from "@/lib/site";
+import { breadcrumbJsonLd, pageMeta, SITE_NAME, SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/pages/JsonLd";
 import { getCategories, getCourse, getCourses, getInstructors, getRelatedCourses, getReviews } from "@/lib/api";
 import { CourseHero } from "@/components/courses/CourseHero";
 import { CourseBuyCard } from "@/components/courses/CourseBuyCard";
@@ -57,7 +58,7 @@ export default async function CourseDetailsPage({ params }: PageProps<"/[lang]/c
     inLanguage: lang,
     educationalLevel: course.level,
     timeRequired: isoHours(course.duration),
-    provider: { "@type": "Organization", name: SITE_NAME[lang], sameAs: SITE_URL },
+    provider: { "@type": "EducationalOrganization", name: SITE_NAME[lang], url: SITE_URL },
     ...(instructor ? { creator: { "@type": "Person", name: instructor.name[lang] } } : {}),
     offers: { "@type": "Offer", price: course.price, priceCurrency: "USD", category: course.price === 0 ? "Free" : "Paid" },
     aggregateRating: { "@type": "AggregateRating", ratingValue: course.rating, reviewCount: course.reviewsCount, bestRating: 5, worstRating: 1 },
@@ -72,7 +73,18 @@ export default async function CourseDetailsPage({ params }: PageProps<"/[lang]/c
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <JsonLd data={jsonLd} />
+      <JsonLd
+        data={breadcrumbJsonLd(
+          lang,
+          [
+            { name: t("nav.courses"), path: "/courses" },
+            ...(category ? [{ name: category.name[lang], path: `/categories/${category.slug}` }] : []),
+            { name: course.title[lang], path: `/courses/${slug}` },
+          ],
+          t("bc.home"),
+        )}
+      />
       <CourseViewTracker slug={slug} />
       <CourseHero course={course} instructor={instructor} categoryName={category?.name[lang]} categorySlug={category?.slug} />
 

@@ -3,7 +3,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { LOCALES, isLang, nf } from "@/lib/i18n/config";
 import { makeT } from "@/lib/i18n";
-import { pageMeta } from "@/lib/site";
+import { breadcrumbJsonLd, pageMeta } from "@/lib/site";
+import { JsonLd } from "@/components/pages/JsonLd";
 import { getCategories, getCategory, getCourseSummaries, getCoursesByCategory } from "@/lib/api";
 import { facetsOf } from "@/lib/catalog";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -60,6 +61,16 @@ export default async function CategoryPage({ params }: PageProps<"/[lang]/catego
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd(
+          lang,
+          [
+            { name: t("categories.title"), path: "/categories" },
+            { name, path: `/categories/${slug}` },
+          ],
+          t("bc.home"),
+        )}
+      />
       <section className="relative isolate overflow-hidden text-white">
         <Image src={cat.image} alt="" fill priority sizes="100vw" className="-z-20 object-cover" />
         <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/55 to-black/30" />
