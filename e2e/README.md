@@ -1,23 +1,26 @@
 # E2E Tests — NEXORA Academy
 
-End-to-end tests written with **Playwright**, run against the live site on desktop and mobile Chrome.
+[Playwright](https://playwright.dev) end-to-end tests, run on **desktop Chrome** and **mobile Chrome (Pixel 7)**.
+34 tests; the 7 SEO checks run on desktop only, so a full run is 61 executions.
 
-## What is tested
+| Spec | Tests | What it covers |
+|---|---|---|
+| `smoke.spec.js` | 10 | Key pages return 200 with the right title; EN is LTR, AR is RTL; unknown routes 404 |
+| `catalog.spec.js` | 5 | Search → results + `?q=` in URL; empty state + clear; deep link; sort; level filter |
+| `course.spec.js` | 3 | Catalogue → course page; sections; "Start learning" opens the lesson player |
+| `forms.spec.js` | 3 | Sign-up validation (React Hook Form + Zod) and the valid-submit notice |
+| `i18n.spec.js` | 3 | Language switch → `lang="ar" dir="rtl"`; cookie remembered; Arabic SSR is RTL |
+| `seo.spec.js` | 7 | Canonical/hreflang, OG image, JSON-LD, robots.txt, sitemap.xml, noindex |
+| `errors.spec.js` | 3 | Branded, localised 404 with correct status |
 
-| Area | Checks |
-|---|---|
-| Pages | 7 key pages return HTTP 200 with the correct title |
-| i18n | English is LTR, Arabic is RTL (`lang` / `dir`) |
-| Errors | Unknown routes return HTTP 404 |
-
-## Run locally
+## Run
 
 ```bash
 cd e2e
-npm install
+npm ci
 npx playwright install chromium
-npm test                                   # against the live site
-BASE_URL=http://localhost:3000 npm test    # against a local dev server
+npm test                                   # against the live site (default)
+BASE_URL=http://localhost:3000 npm test    # against a local `npm run build && npm start`
 ```
 
-Tests also run automatically on every push via GitHub Actions (`.github/workflows/e2e.yml`).
+In CI (`.github/workflows/e2e.yml`) the app is linted, type-checked and built, then the suite runs against the local production build.
