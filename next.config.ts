@@ -2,9 +2,7 @@ import path from "node:path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   experimental: {
-    agentFeedback: true,
     // BUILD_CPUS=2 limits prerender workers on low-RAM machines (default: Next decides).
     ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
     optimizePackageImports: ["framer-motion", "gsap", "lucide-react", "three", "@react-three/drei"],

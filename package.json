@@ -1,12 +1,18 @@
 {
-  "name": "my-project",
+  "name": "nexora-academy",
   "version": "0.1.0",
   "private": true,
+  "description": "NEXORA Academy — bilingual (EN/AR, RTL) e-learning platform demo built with Next.js 16, React 19 and Tailwind CSS 4.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.9"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^6.0.1",
