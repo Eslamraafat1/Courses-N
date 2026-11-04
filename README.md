@@ -189,6 +189,22 @@ Known limitations:
 - Auto-advance after a lesson works for MP4 only (YouTube/Vimeo embeds do not report completion).
 - With Partial Prerendering, an unknown *course slug* is detected after streaming has started: browsers get the branded 404 page, but non-browser clients may see status 200 (the page still carries `noindex`). Unknown routes always return 404.
 
+<!-- more-projects:start -->
+## More of my work
+
+| Project | What it is | Demo |
+|---|---|---|
+| **[VANTA](https://github.com/Eslamraafat1/E-commerce-New-)** | 3D bilingual e-commerce storefront | [Live](https://e-commerce-new2-delta.vercel.app/en) |
+| **[Atlas Estates](https://github.com/Eslamraafat1/New-Real-Estate)** | 3D real estate platform | [Live](https://new-real-estate-jade.vercel.app) |
+| **[Crust & Crave](https://github.com/Eslamraafat1/New-Restaurant)** | cinematic restaurant storefront | [Live](https://new-restaurant-kappa.vercel.app) |
+| **[Nubia](https://github.com/Eslamraafat1/Perfume)** | perfume store on Supabase | [Live](https://perfume-sooty-alpha.vercel.app) |
+| **[MONOLITH](https://github.com/Eslamraafat1/3D-Website-)** | 3D architecture studio site | [Live](https://3-d-website-seven-xi.vercel.app) |
+| **[Tour Egypt Club](https://github.com/Eslamraafat1/Travel)** | client travel & tours website | [Live](https://touregyptclub.com) |
+| **[Portfolio](https://github.com/Eslamraafat1/new-portfolio)** | bilingual Next.js portfolio | [Live](https://new-portfolio-ashy-xi.vercel.app) |
+
+See everything on my [GitHub profile](https://github.com/Eslamraafat1) and [portfolio](https://new-portfolio-ashy-xi.vercel.app/).
+<!-- more-projects:end -->
+
 ## Author
 
 **Eslam Raafat** — Front-End Developer
